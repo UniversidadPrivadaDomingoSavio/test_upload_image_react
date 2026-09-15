@@ -17,7 +17,9 @@ export default function ImageGallery({ refreshImages }: ImageGalleryProps) {
   useEffect(() => {
     const getImages = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/images");
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/images`,
+        );
 
         const data = await response.json();
 
@@ -41,7 +43,7 @@ export default function ImageGallery({ refreshImages }: ImageGalleryProps) {
             className="border rounded-xl overflow-hidden shadow-sm"
           >
             <img
-              src={`http://localhost:4000/api/images/${image.id}`}
+              src={`${import.meta.env.VITE_API_URL}/api/images/${image.id}`}
               alt={image.name}
               className="w-full h-64 object-cover"
             />

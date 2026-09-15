@@ -48,10 +48,13 @@ export default function DragImage({ onImageUploaded }: DragImageProps) {
     formData.append("image", image);
 
     try {
-      const response = await fetch("http://localhost:4000/api/images", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/images`,
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
 
       if (!response.ok) {
         throw new Error("Error guardando imagen");
